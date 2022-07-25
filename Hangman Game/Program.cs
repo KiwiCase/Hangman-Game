@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Hangman Game
+namespace HangmanGame
 {
     internal class Program
 {
