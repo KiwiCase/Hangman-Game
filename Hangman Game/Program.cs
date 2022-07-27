@@ -28,6 +28,9 @@ namespace HangmanGame
             string word = wordList[wordId];
             char[] guess = new char[wordList.Length];
             Console.WriteLine("Please enter your guess: ");
+
+            for (int p = 0; p < wordList.Length; p++)
+                guess[p] = '_';
         }
     }
 }
