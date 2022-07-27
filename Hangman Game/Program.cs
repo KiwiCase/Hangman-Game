@@ -23,14 +23,27 @@ namespace HangmanGame
             wordList[7] = "Data Types";
             wordList[8] = "Floating Point";
             wordList[9] = "Debugger";
-            Random randWord = new Random();
-            int wordId = randWord.Next(0, 9);
-            string word = wordList[wordId];
-            char[] guess = new char[wordList.Length];
-            Console.WriteLine("Please enter your guess: ");
+            string chosenWord = wordList[new Random().Next(0, wordList.Length - 1)];
+            int lives = 5;
+            var letters = new List<string>();
 
-            for (int p = 0; p < wordList.Length; p++)
-                guess[p] = '_';
+            while (lives != 0)
+            {
+                int lettersLeft = 0;
+                foreach (string character in chosenWord)
+                {
+                    string letter = character.ToString();
+                    if (letters.Contains(letter))
+                    {
+                        Console.WriteLine(letter);
+                    }
+                    else
+                    {
+                        Console.WriteLine("_");
+                        lettersLeft++;
+                    }
+                }
+            }
         }
     }
 }
