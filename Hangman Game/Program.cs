@@ -49,7 +49,7 @@ namespace HangmanGame
                     }
                 }
                 Console.WriteLine("");
-                Console.WriteLine($"There are {lettersLeft} letters remaining in this word.");
+                Console.WriteLine($"There {(lettersLeft == 1 ? "is" : "are")} {lettersLeft} {(lettersLeft == 1 ? "letter" : "letters")} remaining in this word.");
 
                 if (lettersLeft > 0)
                 {
@@ -94,6 +94,7 @@ namespace HangmanGame
                             }
                             else
                             {
+                                Console.WriteLine("");
                                 Console.Write("OK then! Get outta here!");
                                 break;
                             }
@@ -120,6 +121,7 @@ namespace HangmanGame
                     }
                     else
                     {
+                        Console.WriteLine("");
                         Console.Write("OK then! Get outta here!");
                         break;
                     }
