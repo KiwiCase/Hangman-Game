@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿
 namespace HangmanGame
 {
     internal class Program
@@ -89,7 +85,6 @@ namespace HangmanGame
                                 lives = 5;
                                 Console.WriteLine("");
                                 Console.WriteLine("Here is your new word:");
-                                Console.WriteLine("");
                                 letters = new List<string>();
                             }
                             else
@@ -116,7 +111,6 @@ namespace HangmanGame
                         lives = 5;
                         Console.WriteLine("");
                         Console.WriteLine("Here is your new word:");
-                        Console.WriteLine("");
                         letters = new List<string>();
                     }
                     else
