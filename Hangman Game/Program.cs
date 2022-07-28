@@ -13,16 +13,16 @@ namespace HangmanGame
 
             Console.WriteLine("The Hangman Game");
 
-            wordList[0] = "Trello";
-            wordList[1] = "Reverse";
-            wordList[2] = "Number";
-            wordList[3] = "Google";
-            wordList[4] = "Guessing";
-            wordList[5] = "Keyboard";
-            wordList[6] = "Github";
-            wordList[7] = "Data Types";
-            wordList[8] = "Floating Point";
-            wordList[9] = "Debugger";
+            wordList[0] = "trello";
+            wordList[1] = "reverse";
+            wordList[2] = "number";
+            wordList[3] = "google";
+            wordList[4] = "guessing";
+            wordList[5] = "keyboard";
+            wordList[6] = "github";
+            wordList[7] = "data types";
+            wordList[8] = "floating Point";
+            wordList[9] = "debugger";
             string chosenWord = wordList[new Random().Next(0, wordList.Length - 1)];
             int lives = 5;
             var letters = new List<string>();
