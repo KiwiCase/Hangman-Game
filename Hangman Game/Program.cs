@@ -41,7 +41,7 @@ namespace HangmanGame
                     }
                     else
                     {
- 
+
                         Console.Write("_ ");
 
                         lettersLeft++;
@@ -50,40 +50,40 @@ namespace HangmanGame
                 Console.WriteLine(string.Empty);
 
                 if (lettersLeft > 0)
-                {           
-
-                Console.Write("Type in a letter: ");
-
-                string key = Console.ReadKey().Key.ToString().ToLower();
-                Console.WriteLine(string.Empty);
-
-                if (letters.Contains(key))
                 {
-                    Console.WriteLine("You already entered this letter!");
-                    continue;
-                }
 
-                letters.Add(key);
+                    Console.Write("Enter in a letter: ");
 
-                if (!chosenWord.Contains(key))
-                {
-                    lives--;
+                    string not = Console.ReadKey().Key.ToString().ToLower();
+                    Console.WriteLine(string.Empty);
 
-                    if (lives > 0)
+                    if (letters.Contains(not))
                     {
-                        Console.WriteLine($"The letter '{key}' is not in the word. You have {lives} {(lives == 1 ? "try" : "tries")} left.");
+                        Console.WriteLine("You've already entered this letter - please enter a different letter.");
+                        continue;
+                    }
+
+                    letters.Add(not);
+
+                    if (!chosenWord.Contains(not))
+                    {
+                        lives--;
+
+                        if (lives > 0)
+                        {
+                            Console.WriteLine($"The letter '{not}' is not in the word. You have {lives} {(lives == 1 ? "try" : "tries")} left.");
+                        }
                     }
                 }
             }
-            }
 
-            if (lives > 0)
+            if (lettersLeft == 0)
             {
-                Console.WriteLine($"You won with {lives} {(lives == 1 ? "life" : "lives")} left!");
+                Console.WriteLine($"Correct! You won with {lives} {(lives == 1 ? "life" : "lives")} left!");
             }
             else
             {
-                Console.WriteLine($"You lost! The word was {chosenWord}.");
+                Console.WriteLine($"Incorrect - You lost! The word was {chosenWord}.");
             }
         }
     }
