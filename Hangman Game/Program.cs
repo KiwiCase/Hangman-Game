@@ -25,7 +25,6 @@ namespace HangmanGame
             wordList[9] = "Debugger";
             string chosenWord = wordList[new Random().Next(0, wordList.Length - 1)];
             int lives = 5;
-            int lettersLeft = 0;
             var letters = new List<string>();
 
             Console.WriteLine("Enter your 1-letter guess: ");
@@ -63,5 +62,4 @@ namespace HangmanGame
         }
 
     }
-}
 }
