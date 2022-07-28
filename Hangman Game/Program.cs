@@ -25,25 +25,43 @@ namespace HangmanGame
             wordList[9] = "Debugger";
             string chosenWord = wordList[new Random().Next(0, wordList.Length - 1)];
             int lives = 5;
+            int lettersLeft = 0;
             var letters = new List<string>();
 
-            while (lives != 0)
+            Console.WriteLine("Enter your 1-letter guess: ");
+            string key = Console.ReadKey().Key.ToString().ToLower();
+            Console.WriteLine(string.Empty);
+
+            if (letters.Contains(key))
             {
-                int lettersLeft = 0;
-                foreach (string character in chosenWord)
+                Console.WriteLine("You've already entered this letter - please enter a different letter: ");
+            }
+
+            letters.Add(key);
+
+            if (!chosenWord.Contains(key))
+            {
+                lives--;
+
+                if (lives > 0)
                 {
-                    string letter = character.ToString();
-                    if (letters.Contains(letter))
-                    {
-                        Console.WriteLine(letter);
-                    }
-                    else
-                    {
-                        Console.WriteLine("_");
-                        lettersLeft++;
-                    }
+                    Console.WriteLine($"'{key}' is not in the word. You have {lives} {(lives == 1 ? "try" : "tries")} remaining");
                 }
             }
+
+            if (lives > 0)
+            {
+                Console.WriteLine("You won! Congratulations!");
+            }
+            else
+            {
+                Console.WriteLine($"You lost! The word was {chosenWord}.");
+            }
+
+
+
         }
+
     }
+}
 }
