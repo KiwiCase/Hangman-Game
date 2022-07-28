@@ -33,7 +33,7 @@ namespace HangmanGame
             while (lives != 0)
             {
                 int lettersLeft = 0;
-                foreach (var character in chosenWord)
+                foreach (char character in chosenWord)
                 {
                     var letter = character.ToString();
 
@@ -42,7 +42,7 @@ namespace HangmanGame
                         Console.Write(letter + " ");
                     }
                     else
-                    {                   
+                    {
                         Console.Write("_ ");
 
                         lettersLeft++;
@@ -80,16 +80,18 @@ namespace HangmanGame
                     }
 
                 }
-            }
-            if (lettersLeft == 0)
-            {
-                Console.WriteLine($"Correct! You won with {lives} {(lives == 1 ? "life" : "lives")} left!");
+                if (lettersLeft == 0)
+                {
+                    Console.WriteLine($"Correct! You won with {lives} {(lives == 1 ? "life" : "lives")} left!");
+                    break;
+                }
+
+                if (lives == 0)
+                {
+                    Console.WriteLine($"Incorrect - You lost! The word was {chosenWord}.");
+                }
             }
 
-            if (lives == 0)
-            {
-                Console.WriteLine($"Incorrect - You lost! The word was {chosenWord}.");
-            }
 
 
         }
