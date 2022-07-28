@@ -7,6 +7,9 @@ namespace HangmanGame
 {
     internal class Program
     {
+        private static int lettersLeft;
+        private static List<string> letters;
+
         static void Main(string[] args)
         {
             string[] wordList = new string[10];
@@ -20,17 +23,16 @@ namespace HangmanGame
             wordList[4] = "guessing";
             wordList[5] = "keyboard";
             wordList[6] = "github";
-            wordList[7] = "data" + " " + "types";
-            wordList[8] = "floating" + " " + "point";
+            wordList[7] = "data";
+            wordList[8] = "floating";
             wordList[9] = "debugger";
             string chosenWord = wordList[new Random().Next(0, wordList.Length - 1)];
             int lives = 5;
-            int lettersLeft = 0;
-            var letters = new List<string>();
+            letters = new List<string>();
 
             while (lives != 0)
             {
-
+                int lettersLeft = 0;
                 foreach (var character in chosenWord)
                 {
                     var letter = character.ToString();
@@ -40,14 +42,14 @@ namespace HangmanGame
                         Console.Write(letter + " ");
                     }
                     else
-                    {
-
+                    {                   
                         Console.Write("_ ");
 
                         lettersLeft++;
                     }
                 }
                 Console.WriteLine(string.Empty);
+                Console.WriteLine(lettersLeft);
 
                 if (lettersLeft > 0)
                 {
@@ -73,17 +75,20 @@ namespace HangmanGame
                         {
                             Console.WriteLine($"The letter '{not}' is not in the word. You have {lives} {(lives == 1 ? "try" : "tries")} left.");
                         }
+                        else
+                            break;
                     }
 
-                    if (lettersLeft == 0)
-                    {
-                        Console.WriteLine($"Correct! You won with {lives} {(lives == 1 ? "life" : "lives")} left!");
-                    }
-                    if (lives == 0)
-                    {
-                        Console.WriteLine($"Incorrect - You lost! The word was {chosenWord}.");
-                    }
                 }
+            }
+            if (lettersLeft == 0)
+            {
+                Console.WriteLine($"Correct! You won with {lives} {(lives == 1 ? "life" : "lives")} left!");
+            }
+
+            if (lives == 0)
+            {
+                Console.WriteLine($"Incorrect - You lost! The word was {chosenWord}.");
             }
 
 
