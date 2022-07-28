@@ -20,8 +20,8 @@ namespace HangmanGame
             wordList[4] = "guessing";
             wordList[5] = "keyboard";
             wordList[6] = "github";
-            wordList[7] = "data types";
-            wordList[8] = "floating point";
+            wordList[7] = "data" + " " + "types";
+            wordList[8] = "floating" + " " + "point";
             wordList[9] = "debugger";
             string chosenWord = wordList[new Random().Next(0, wordList.Length - 1)];
             int lives = 5;
@@ -37,7 +37,7 @@ namespace HangmanGame
 
                     if (letters.Contains(letter))
                     {
-                        Console.Write(letter);
+                        Console.Write(letter + " ");
                     }
                     else
                     {
@@ -52,7 +52,7 @@ namespace HangmanGame
                 if (lettersLeft > 0)
                 {
 
-                    Console.Write("Enter in a letter: ");
+                    Console.WriteLine("Please type a letter: ");
 
                     string not = Console.ReadKey().Key.ToString().ToLower();
                     Console.WriteLine(string.Empty);
@@ -74,17 +74,19 @@ namespace HangmanGame
                             Console.WriteLine($"The letter '{not}' is not in the word. You have {lives} {(lives == 1 ? "try" : "tries")} left.");
                         }
                     }
+
+                    if (lettersLeft == 0)
+                    {
+                        Console.WriteLine($"Correct! You won with {lives} {(lives == 1 ? "life" : "lives")} left!");
+                    }
+                    if (lives == 0)
+                    {
+                        Console.WriteLine($"Incorrect - You lost! The word was {chosenWord}.");
+                    }
                 }
             }
 
-            if (lettersLeft == 0)
-            {
-                Console.WriteLine($"Correct! You won with {lives} {(lives == 1 ? "life" : "lives")} left!");
-            }
-            else
-            {
-                Console.WriteLine($"Incorrect - You lost! The word was {chosenWord}.");
-            }
+
         }
     }
 }
