@@ -57,7 +57,7 @@ namespace HangmanGame
                     Console.WriteLine("Please type a letter: ");
 
                     string not = Console.ReadKey().Key.ToString().ToLower();
-                    Console.WriteLine(string.Empty);
+                    Console.WriteLine("");
 
                     if (letters.Contains(not))
                     {
@@ -88,6 +88,8 @@ namespace HangmanGame
                                 chosenWord = wordList[new Random().Next(0, wordList.Length - 1)];
                                 lives = 5;
                                 Console.WriteLine("");
+                                Console.WriteLine("Here is your new word:");
+                                Console.WriteLine("");
                                 letters = new List<string>();
                             }
                             else
@@ -111,6 +113,8 @@ namespace HangmanGame
                     {
                         chosenWord = wordList[new Random().Next(0, wordList.Length - 1)];
                         lives = 5;
+                        Console.WriteLine("");
+                        Console.WriteLine("Here is your new word:");
                         Console.WriteLine("");
                         letters = new List<string>();
                     }
