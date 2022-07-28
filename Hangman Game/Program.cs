@@ -21,45 +21,70 @@ namespace HangmanGame
             wordList[5] = "keyboard";
             wordList[6] = "github";
             wordList[7] = "data types";
-            wordList[8] = "floating Point";
+            wordList[8] = "floating point";
             wordList[9] = "debugger";
             string chosenWord = wordList[new Random().Next(0, wordList.Length - 1)];
             int lives = 5;
+            int lettersLeft = 0;
             var letters = new List<string>();
 
-            Console.WriteLine("Enter your 1-letter guess: ");
-            string key = Console.ReadKey().Key.ToString().ToLower();
-            Console.WriteLine(string.Empty);
-
-            if (letters.Contains(key))
+            while (lives != 0)
             {
-                Console.WriteLine("You've already entered this letter - please enter a different letter: ");
-            }
 
-            letters.Add(key);
-
-            if (!chosenWord.Contains(key))
-            {
-                lives--;
-
-                if (lives > 0)
+                foreach (var character in chosenWord)
                 {
-                    Console.WriteLine($"'{key}' is not in the word. You have {lives} {(lives == 1 ? "try" : "tries")} remaining");
+                    var letter = character.ToString();
+
+                    if (letters.Contains(letter))
+                    {
+                        Console.Write(letter);
+                    }
+                    else
+                    {
+ 
+                        Console.Write("_ ");
+
+                        lettersLeft++;
+                    }
                 }
+                Console.WriteLine(string.Empty);
+
+                if (lettersLeft > 0)
+                {           
+
+                Console.Write("Type in a letter: ");
+
+                string key = Console.ReadKey().Key.ToString().ToLower();
+                Console.WriteLine(string.Empty);
+
+                if (letters.Contains(key))
+                {
+                    Console.WriteLine("You already entered this letter!");
+                    continue;
+                }
+
+                letters.Add(key);
+
+                if (!chosenWord.Contains(key))
+                {
+                    lives--;
+
+                    if (lives > 0)
+                    {
+                        Console.WriteLine($"The letter '{key}' is not in the word. You have {lives} {(lives == 1 ? "try" : "tries")} left.");
+                    }
+                }
+            }
             }
 
             if (lives > 0)
             {
-                Console.WriteLine("You won! Congratulations!");
+                Console.WriteLine($"You won with {lives} {(lives == 1 ? "life" : "lives")} left!");
             }
             else
             {
                 Console.WriteLine($"You lost! The word was {chosenWord}.");
             }
-
-
-
         }
-
     }
 }
