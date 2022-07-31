@@ -17,7 +17,7 @@ namespace HangmanGame
 
             while (playAgain == 'Y')
             {
-                while (lives != 0)
+                while (lives > 0)
                 {
                     int lettersLeft = 0;
                     foreach (char character in chosenWord)
