@@ -8,20 +8,10 @@ namespace HangmanGame
 
         static void Main(string[] args)
         {
-            string[] wordList = new string[10];
+            string[] wordList = new string[10] { "trello", "reverse", "number", "google", "guessing", "keyboard", "github", "data", "floating", "debugger"};
 
             Console.WriteLine("The Hangman Game");
 
-            wordList[0] = "trello";
-            wordList[1] = "reverse";
-            wordList[2] = "number";
-            wordList[3] = "google";
-            wordList[4] = "guessing";
-            wordList[5] = "keyboard";
-            wordList[6] = "github";
-            wordList[7] = "data";
-            wordList[8] = "floating";
-            wordList[9] = "debugger";
             string chosenWord = wordList[new Random().Next(0, wordList.Length - 1)];
             int lives = 5;
             string response;
