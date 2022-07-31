@@ -38,11 +38,10 @@ namespace HangmanGame
                             lettersLeft++;
                         }
                     }
-                    Console.WriteLine("");
 
                     if (lettersLeft > 0)
                     {
-                        Console.WriteLine($"There {(lettersLeft == 1 ? "is" : "are")} {lettersLeft} {(lettersLeft == 1 ? "letter" : "letters")} remaining in this word.");
+                        Console.WriteLine($"\nThere {(lettersLeft == 1 ? "is" : "are")} {lettersLeft} {(lettersLeft == 1 ? "letter" : "letters")} remaining in this word.");
                         Console.WriteLine("Please type a letter: ");
 
                         string givenLetter = Console.ReadKey().KeyChar.ToString().ToLower();
@@ -74,7 +73,7 @@ namespace HangmanGame
                     }
                     if (lettersLeft == 0)
                     {
-                        Console.WriteLine($"Correct! You won with {lives} {(lives == 1 ? "life" : "lives")} left!");
+                        Console.WriteLine($"\nCorrect! You won with {lives} {(lives == 1 ? "life" : "lives")} left!");
                         break;
                     }
                 }
@@ -87,14 +86,12 @@ namespace HangmanGame
                 {
                     chosenWord = wordList[new Random().Next(0, wordList.Length - 1)];
                     lives = 5;
-                    Console.WriteLine("");
-                    Console.WriteLine("Here is your new word:");
+                    Console.WriteLine("\nHere is your new word:");
                     letters = new List<string>();
                 }
                 else
                 {
-                    Console.WriteLine("");
-                    Console.Write("OK then! Get outta here!");
+                    Console.Write("\nOK then! Get outta here!");
                     break;
                 }
             }
