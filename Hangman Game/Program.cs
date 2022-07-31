@@ -45,11 +45,10 @@ namespace HangmanGame
                     }
                 }
                 Console.WriteLine("");
-                Console.WriteLine($"There {(lettersLeft == 1 ? "is" : "are")} {lettersLeft} {(lettersLeft == 1 ? "letter" : "letters")} remaining in this word.");
 
                 if (lettersLeft > 0)
                 {
-
+                    Console.WriteLine($"There {(lettersLeft == 1 ? "is" : "are")} {lettersLeft} {(lettersLeft == 1 ? "letter" : "letters")} remaining in this word.");
                     Console.WriteLine("Please type a letter: ");
 
                     string not = Console.ReadKey().KeyChar.ToString().ToLower();
