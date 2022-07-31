@@ -3,9 +3,6 @@ namespace HangmanGame
 {
     internal class Program
     {
-        private static int playAgain;
-        private static List<string> letters;
-
         static void Main(string[] args)
         {
             string[] wordList = new string[10] { "trello", "reverse", "number", "google", "guessing", "keyboard", "github", "data", "floating", "debugger"};
@@ -15,8 +12,8 @@ namespace HangmanGame
             string chosenWord = wordList[new Random().Next(0, wordList.Length - 1)];
             int lives = 5;
             string response;
-            playAgain = 'Y';
-            letters = new List<string>();
+            char playAgain = 'Y';
+            List<string> letters = new List<string>();
 
             while (playAgain == 'Y')
             {
