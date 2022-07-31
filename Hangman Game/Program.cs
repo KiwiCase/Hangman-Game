@@ -51,24 +51,24 @@ namespace HangmanGame
                     Console.WriteLine($"There {(lettersLeft == 1 ? "is" : "are")} {lettersLeft} {(lettersLeft == 1 ? "letter" : "letters")} remaining in this word.");
                     Console.WriteLine("Please type a letter: ");
 
-                    string not = Console.ReadKey().KeyChar.ToString().ToLower();
+                    string givenLetter = Console.ReadKey().KeyChar.ToString().ToLower();
                     Console.WriteLine("");
 
-                    if (letters.Contains(not))
+                    if (letters.Contains(givenLetter))
                     {
                         Console.WriteLine("You've already entered this letter - please enter a different letter.");
                         continue;
                     }
 
-                    letters.Add(not);
+                    letters.Add(givenLetter);
 
-                    if (!chosenWord.Contains(not))
+                    if (!chosenWord.Contains(givenLetter))
                     {
                         lives--;
 
                         if (lives > 0)
                         {
-                            Console.WriteLine($"The letter '{not}' is not in the word. You have {lives} {(lives == 1 ? "try" : "tries")} left.");
+                            Console.WriteLine($"The letter '{givenLetter}' is not in the word. You have {lives} {(lives == 1 ? "try" : "tries")} left.");
                         }
 
                         if (lives == 0)
