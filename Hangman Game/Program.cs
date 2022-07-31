@@ -82,14 +82,12 @@ namespace HangmanGame
                             {
                                 chosenWord = wordList[new Random().Next(0, wordList.Length - 1)];
                                 lives = 5;
-                                Console.WriteLine("");
-                                Console.WriteLine("Here is your new word:");
+                                Console.WriteLine("\nHere is your new word:");
                                 letters = new List<string>();
                             }
                             else
                             {
-                                Console.WriteLine("");
-                                Console.Write("OK then! Get outta here!");
+                                Console.Write("\nOK then! Get outta here!");
                                 break;
                             }
                         }
