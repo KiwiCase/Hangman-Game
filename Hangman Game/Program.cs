@@ -3,6 +3,7 @@ namespace HangmanGame
 {
     internal class Program
     {
+        private static int playAgain;
         private static List<string> letters;
 
         static void Main(string[] args)
@@ -24,104 +25,89 @@ namespace HangmanGame
             string chosenWord = wordList[new Random().Next(0, wordList.Length - 1)];
             int lives = 5;
             string response;
+            playAgain = 'Y';
             letters = new List<string>();
 
-            while (lives != 0)
+            while (playAgain == 'Y')
             {
-                int lettersLeft = 0;
-                foreach (char character in chosenWord)
+                while (lives != 0)
                 {
-                    var letter = character.ToString();
-
-                    if (letters.Contains(letter))
+                    int lettersLeft = 0;
+                    foreach (char character in chosenWord)
                     {
-                        Console.Write(letter + " ");
+                        var letter = character.ToString();
+
+                        if (letters.Contains(letter))
+                        {
+                            Console.Write(letter + " ");
+                        }
+                        else
+                        {
+                            Console.Write("_ ");
+
+                            lettersLeft++;
+                        }
                     }
-                    else
-                    {
-                        Console.Write("_ ");
-
-                        lettersLeft++;
-                    }
-                }
-                Console.WriteLine("");
-
-                if (lettersLeft > 0)
-                {
-                    Console.WriteLine($"There {(lettersLeft == 1 ? "is" : "are")} {lettersLeft} {(lettersLeft == 1 ? "letter" : "letters")} remaining in this word.");
-                    Console.WriteLine("Please type a letter: ");
-
-                    string givenLetter = Console.ReadKey().KeyChar.ToString().ToLower();
                     Console.WriteLine("");
 
-                    if (letters.Contains(givenLetter))
+                    if (lettersLeft > 0)
                     {
-                        Console.WriteLine("You've already entered this letter - please enter a different letter.");
-                        continue;
-                    }
+                        Console.WriteLine($"There {(lettersLeft == 1 ? "is" : "are")} {lettersLeft} {(lettersLeft == 1 ? "letter" : "letters")} remaining in this word.");
+                        Console.WriteLine("Please type a letter: ");
 
-                    letters.Add(givenLetter);
+                        string givenLetter = Console.ReadKey().KeyChar.ToString().ToLower();
+                        Console.WriteLine("");
 
-                    if (!chosenWord.Contains(givenLetter))
-                    {
-                        lives--;
-
-                        if (lives > 0)
+                        if (letters.Contains(givenLetter))
                         {
-                            Console.WriteLine($"The letter '{givenLetter}' is not in the word. You have {lives} {(lives == 1 ? "try" : "tries")} left.");
+                            Console.WriteLine("You've already entered this letter - please enter a different letter.");
+                            continue;
                         }
 
-                        if (lives == 0)
-                        {
-                            Console.WriteLine($"Incorrect - You lost! The word was '{chosenWord}'.");
-                            Console.WriteLine("-----------------------------------");
-                            Console.WriteLine("Press Y to play again or N to quit.");
-                            response = Console.ReadKey().KeyChar.ToString().ToUpper();
+                        letters.Add(givenLetter);
 
-                            if (response == "Y")
+                        if (!chosenWord.Contains(givenLetter))
+                        {
+                            lives--;
+
+                            if (lives > 0)
                             {
-                                chosenWord = wordList[new Random().Next(0, wordList.Length - 1)];
-                                lives = 5;
-                                Console.WriteLine("\nHere is your new word:");
-                                letters = new List<string>();
+                                Console.WriteLine($"The letter '{givenLetter}' is not in the word. You have {lives} {(lives == 1 ? "try" : "tries")} left.");
                             }
-                            else
+
+                            if (lives == 0)
                             {
-                                Console.Write("\nOK then! Get outta here!");
+                                Console.WriteLine($"Incorrect - You lost! The word was '{chosenWord}'.");
                                 break;
                             }
                         }
-
                     }
-
-                }
-                if (lettersLeft == 0)
-                {
-                    Console.WriteLine($"Correct! You won with {lives} {(lives == 1 ? "life" : "lives")} left!");
-                    Console.WriteLine("-----------------------------------");
-                    Console.WriteLine("Press Y to play again or N to quit.");
-                    response = Console.ReadKey().KeyChar.ToString().ToUpper();
-
-                    if (response == "Y")
+                    if (lettersLeft == 0)
                     {
-                        chosenWord = wordList[new Random().Next(0, wordList.Length - 1)];
-                        lives = 5;
-                        Console.WriteLine("");
-                        Console.WriteLine("Here is your new word:");
-                        letters = new List<string>();
-                    }
-                    else
-                    {
-                        Console.WriteLine("");
-                        Console.Write("OK then! Get outta here!");
+                        Console.WriteLine($"Correct! You won with {lives} {(lives == 1 ? "life" : "lives")} left!");
                         break;
                     }
-
                 }
 
+                Console.WriteLine("-----------------------------------");
+                Console.WriteLine("Press Y to play again or N to quit.");
+                response = Console.ReadKey().KeyChar.ToString().ToUpper();
 
+                if (response == "Y")
+                {
+                    chosenWord = wordList[new Random().Next(0, wordList.Length - 1)];
+                    lives = 5;
+                    Console.WriteLine("");
+                    Console.WriteLine("Here is your new word:");
+                    letters = new List<string>();
+                }
+                else
+                {
+                    Console.WriteLine("");
+                    Console.Write("OK then! Get outta here!");
+                    break;
+                }
             }
-
         }
 
     }
