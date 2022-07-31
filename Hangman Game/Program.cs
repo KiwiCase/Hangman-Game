@@ -52,7 +52,7 @@ namespace HangmanGame
 
                     Console.WriteLine("Please type a letter: ");
 
-                    string not = Console.ReadKey().Key.ToString().ToLower();
+                    string not = Console.ReadKey().KeyChar.ToString().ToLower();
                     Console.WriteLine("");
 
                     if (letters.Contains(not))
@@ -77,7 +77,7 @@ namespace HangmanGame
                             Console.WriteLine($"Incorrect - You lost! The word was '{chosenWord}'.");
                             Console.WriteLine("-----------------------------------");
                             Console.WriteLine("Press Y to play again or N to quit.");
-                            response = Console.ReadKey().Key.ToString().ToUpper();
+                            response = Console.ReadKey().KeyChar.ToString().ToUpper();
 
                             if (response == "Y")
                             {
@@ -103,7 +103,7 @@ namespace HangmanGame
                     Console.WriteLine($"Correct! You won with {lives} {(lives == 1 ? "life" : "lives")} left!");
                     Console.WriteLine("-----------------------------------");
                     Console.WriteLine("Press Y to play again or N to quit.");
-                    response = Console.ReadKey().Key.ToString().ToUpper();
+                    response = Console.ReadKey().KeyChar.ToString().ToUpper();
 
                     if (response == "Y")
                     {
