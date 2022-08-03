@@ -5,11 +5,13 @@ namespace HangmanGame
     {
         static void Main(string[] args)
         {
-            string[] wordList = new string[10] { "trello", "reverse", "number", "google", "guessing", "keyboard", "github", "data", "floating", "debugger"};
+            string[] wordList = new string[10] { "trello", "reverse", "number", "google", "guessing", "keyboard", "github", "data", "floating", "debugger" };
 
             Console.WriteLine("The Hangman Game");
 
-            string chosenWord = wordList[new Random.ext(0, wordList.Length)];
+            Random rnd = new Random();
+            int rndIndex = rnd.Next();
+            string chosenWord = wordList[new Random.(0, wordList.Length)];
             int lives = 5;
             string response;
             char playAgain = 'Y';
@@ -61,14 +63,14 @@ namespace HangmanGame
                                 Console.WriteLine($"The letter '{givenLetter}' is not in the word. You have {lives} {(lives == 1 ? "try" : "tries")} left.");
                             }
 
-                            if (lives == 0)
+                            else
                             {
                                 Console.WriteLine($"Incorrect - You lost! The word was '{chosenWord}'.");
                                 break;
                             }
                         }
                     }
-                    if (lettersLeft == 0)
+                    else
                     {
                         Console.WriteLine($"\nCorrect! You won with {lives} {(lives == 1 ? "life" : "lives")} left!");
                         break;
