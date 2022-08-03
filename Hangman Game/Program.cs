@@ -9,7 +9,7 @@ namespace HangmanGame
 
             Console.WriteLine("The Hangman Game");
 
-            string chosenWord = wordList[new Random().Next(0, wordList.Length - 1)];
+            string chosenWord = wordList[new Random.ext(0, wordList.Length)];
             int lives = 5;
             string response;
             char playAgain = 'Y';
